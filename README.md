@@ -1,2 +1,2 @@
-# seahorse-program-library
-Collection of Solana Programs written in Seahorse Lang
+# seahorse-cookbook
+A collection of everything on Seahorse Lang
