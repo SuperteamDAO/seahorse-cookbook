@@ -1,15 +1,15 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import Image from "next/image";
-import styles from "../styles/Home.module.css";
+import Sidebar from "../components/Sidebar";
 
 const Home: NextPage = () => {
     return (
-        <div className={styles.container}>
+        <div>
             <Head>
                 <title>Seahorse Cookbook</title>
                 <meta name="description" content="Everything Seahorse Lang" />
                 <link rel="icon" href="/favicon.ico" />
+                <Sidebar />
             </Head>
         </div>
     );
