@@ -10,10 +10,8 @@ import {
 } from "@chakra-ui/react";
 import { TfiNewWindow } from "react-icons/tfi";
 import React, { useEffect, useState } from "react";
-import Sidebar from "../../components/Sidebar";
-import { supabase } from "../../lib/initSupabase";
-
-// const programsRegistry = [
+import Sidebar from "../components/Sidebar";
+import { supabase } from "../lib/initSupabase";
 // 	{
 // 		id: 1,
 // 		name: "escrow",
