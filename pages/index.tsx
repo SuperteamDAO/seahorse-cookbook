@@ -8,7 +8,7 @@ const Home: NextPage = () => {
 			<Head>
 				<title>Seahorse Cookbook</title>
 				<meta name="description" content="Everything Seahorse Lang" />
-				<link rel="icon" href="/favicon.ico" />
+				<link rel="icon" href="/CookBookLogo.png" />
 			</Head>
 			<Sidebar />
 		</div>
@@ -16,4 +16,3 @@ const Home: NextPage = () => {
 };
 
 export default Home;
-
