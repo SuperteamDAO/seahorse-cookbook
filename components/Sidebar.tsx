@@ -1,4 +1,3 @@
-import React, { ReactNode } from "react";
 import {
 	Box,
 	CloseButton,
@@ -14,25 +13,33 @@ import {
 	FlexProps,
 	IconButton,
 } from "@chakra-ui/react";
-import { FiCode, FiBookOpen, FiPenTool, FiMenu } from "react-icons/fi";
+import { FiBook, FiBookOpen, FiPenTool, FiMenu } from "react-icons/fi";
 import { IconType } from "react-icons";
 import { ReactText } from "react";
 import CookbookLogo from "../public/CookBookLogo.png";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 interface LinkItemProps {
 	name: string;
 	icon: IconType;
 	disabled: boolean;
+	url: string;
 }
 const LinkItems: Array<LinkItemProps> = [
-	{ name: "Program Library", icon: FiBookOpen, disabled: false },
-	{ name: "CLI Tools", icon: FiCode, disabled: true },
-	{ name: "Tutorials", icon: FiPenTool, disabled: true },
+	{
+		name: "Program Library",
+		icon: FiBookOpen,
+		disabled: false,
+		url: "/programlibrary",
+	},
+	{ name: "Content Aggregator", icon: FiBook, disabled: true, url: "/404" },
+	{ name: "Tutorials", icon: FiPenTool, disabled: true, url: "/404" },
 ];
 
 export default function Sidebar() {
 	const { isOpen, onOpen, onClose } = useDisclosure();
+
 	return (
 		<Box minH="100vh" bg={useColorModeValue("gray.100", "gray.900")}>
 			<SidebarContent
@@ -54,9 +61,6 @@ export default function Sidebar() {
 			</Drawer>
 			{/* mobilenav */}
 			<MobileNav onOpen={onOpen} />
-			<Box ml={{ base: 0, md: 60 }} p="4">
-				{/* {children} */}
-			</Box>
 		</Box>
 	);
 }
@@ -66,6 +70,7 @@ interface SidebarProps extends BoxProps {
 }
 
 const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
+	const router = useRouter();
 	return (
 		<Box
 			transition="3s ease"
@@ -74,7 +79,8 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 			borderRightColor={useColorModeValue("gray.200", "gray.700")}
 			w={{ base: "full", md: 80 }}
 			pos="fixed"
-			h="full"
+			h="100%"
+			top="0"
 			{...rest}
 		>
 			<Flex
@@ -82,6 +88,8 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 				alignItems="center"
 				mx="6"
 				justifyContent="space-between"
+				cursor="pointer"
+				onClick={() => router.push("/")}
 			>
 				<Image
 					src={CookbookLogo}
@@ -89,7 +97,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 					width={30}
 					style={{ borderRadius: 8, marginRight: 0 }}
 				/>
-				<Text fontSize="2xl" fontWeight="bold">
+				<Text fontSize="2xl" fontWeight="bold" color={"#FB7185"}>
 					Seahorse Cookbook
 				</Text>
 				<CloseButton
@@ -103,6 +111,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 					key={link.name}
 					icon={link.icon}
 					linkDisabled={link.disabled}
+					url={link.url}
 				>
 					{link.name}
 				</NavItem>
@@ -115,8 +124,17 @@ interface NavItemProps extends FlexProps {
 	icon: IconType;
 	children: ReactText;
 	linkDisabled: boolean;
+	url: string;
 }
-const NavItem = ({ icon, linkDisabled, children, ...rest }: NavItemProps) => {
+const NavItem = ({
+	icon,
+	url,
+	linkDisabled,
+	children,
+	...rest
+}: NavItemProps) => {
+	const router = useRouter();
+
 	return (
 		<Link
 			href="#"
@@ -129,6 +147,9 @@ const NavItem = ({ icon, linkDisabled, children, ...rest }: NavItemProps) => {
 				mx="6"
 				borderRadius="lg"
 				role="group"
+				onClick={() => {
+					!linkDisabled && router.push(url);
+				}}
 				cursor={linkDisabled ? "not-allowed" : "pointer"}
 				_hover={
 					linkDisabled
