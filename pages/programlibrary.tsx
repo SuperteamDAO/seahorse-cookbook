@@ -5,8 +5,7 @@ import {
 	Text,
 	SimpleGrid,
 	Box,
-	IconButton,
-	Icon,
+	Link,
 } from "@chakra-ui/react";
 import { TfiNewWindow } from "react-icons/tfi";
 import React, { useEffect, useState } from "react";
@@ -47,7 +46,7 @@ function ProgramLibrary() {
 	return (
 		<HStack>
 			<Sidebar />
-			<VStack bg={"gray.900"} h="full" w="full">
+			<VStack bg={"gray.900"} minH="100vh" h="full" w="full">
 				<Heading alignSelf={"start"} mt={10} ml={20} color={"#FB7185"}>
 					Seahorse Program Library
 				</Heading>
@@ -95,23 +94,21 @@ function ProgramLibrary() {
 									<Text color={"#878787"} mb={8}>
 										{registry.description}
 									</Text>
-									<Text
-										cursor="pointer"
-										_hover={{
-											color: "#4db2f7",
-											textDecoration: "underline",
-										}}
-									>
-										<a
+									<Text cursor="pointer">
+										<Link
 											href={
 												"https://twitter.com/" +
 												registry.creator_twitter
 											}
 											target={"_blank"}
 											rel="noopener noreferrer"
+											_hover={{
+												color: "#4db2f7",
+												textDecoration: "underline",
+											}}
 										>
 											{registry.creator_twitter}
-										</a>
+										</Link>
 									</Text>
 								</Box>
 							))}
