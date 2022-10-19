@@ -1,3 +1,4 @@
+import Head from "next/head";
 import {
 	HStack,
 	Heading,
@@ -7,11 +8,11 @@ import {
 	Box,
 	Link,
 } from "@chakra-ui/react";
+import { BounceLoader } from "react-spinners";
 import { TfiNewWindow } from "react-icons/tfi";
 import React, { useEffect, useState } from "react";
 import Sidebar from "../components/Sidebar";
 import { supabase } from "../lib/initSupabase";
-import Head from "next/head";
 
 interface ProgramRegistry {
 	id: number;
@@ -63,6 +64,11 @@ function ProgramLibrary() {
 						Seahorse Program Library
 					</Heading>
 					<Box>
+						{!programsRegistry && (
+							<VStack mt={20}>
+								<BounceLoader color="#FB7185" />
+							</VStack>
+						)}
 						<SimpleGrid
 							columns={2}
 							spacing={20}
