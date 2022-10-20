@@ -15,7 +15,7 @@ import {
 } from "@chakra-ui/react";
 import { FiBook, FiBookOpen, FiPenTool, FiMenu } from "react-icons/fi";
 import { IconType } from "react-icons";
-import { ReactText } from "react";
+import { ReactNode, ReactText } from "react";
 import CookbookLogo from "../public/CookBookLogo.png";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -37,7 +37,7 @@ const LinkItems: Array<LinkItemProps> = [
 	{ name: "Tutorials", icon: FiPenTool, disabled: true, url: "/404" },
 ];
 
-export default function Sidebar() {
+export default function Sidebar({ children }: { children: ReactNode }) {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 
 	return (
@@ -61,6 +61,7 @@ export default function Sidebar() {
 			</Drawer>
 			{/* mobilenav */}
 			<MobileNav onOpen={onOpen} />
+			<Box ml={{ base: 0, md: 80 }}>{children}</Box>
 		</Box>
 	);
 }
@@ -80,7 +81,6 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 			w={{ base: "full", md: 80 }}
 			pos="fixed"
 			h="100%"
-			top="0"
 			{...rest}
 		>
 			<Flex
