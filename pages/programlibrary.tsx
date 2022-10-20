@@ -10,13 +10,9 @@ function ProgramLibrary() {
 				<meta name="description" content="Everything Seahorse Lang" />
 				<link rel="icon" href="/CookBookLogo.png" />
 			</Head>
-			<Sidebar
-				children={
-					<span>
-						<ProgramLibraryContent />
-					</span>
-				}
-			/>
+			<Sidebar>
+				<ProgramLibraryContent />
+			</Sidebar>
 		</div>
 	);
 }
