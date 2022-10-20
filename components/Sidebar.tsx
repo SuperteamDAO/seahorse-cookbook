@@ -12,6 +12,7 @@ import {
 	BoxProps,
 	FlexProps,
 	IconButton,
+	HStack,
 } from "@chakra-ui/react";
 import { FiBook, FiBookOpen, FiPenTool, FiMenu } from "react-icons/fi";
 import { IconType } from "react-icons";
@@ -83,28 +84,35 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 			h="100%"
 			{...rest}
 		>
-			<Flex
-				h="20"
-				alignItems="center"
-				mx="6"
-				justifyContent="space-between"
-				cursor="pointer"
-				onClick={() => router.push("/")}
-			>
-				<Image
-					src={CookbookLogo}
-					height={30}
-					width={30}
-					style={{ borderRadius: 8, marginRight: 0 }}
-				/>
-				<Text fontSize="2xl" fontWeight="bold" color={"#FB7185"}>
-					Seahorse Cookbook
-				</Text>
+			<HStack>
+				<Flex
+					h="20"
+					alignItems="center"
+					ml="6"
+					justifyContent="space-between"
+					cursor="pointer"
+					onClick={() => router.push("/")}
+				>
+					<Image
+						src={CookbookLogo}
+						height={30}
+						width={30}
+						style={{ borderRadius: 8, marginRight: 0 }}
+					/>
+					<Text
+						fontSize="2xl"
+						fontWeight="bold"
+						color={"#FB7185"}
+						ml={4}
+					>
+						Seahorse Cookbook
+					</Text>
+				</Flex>
 				<CloseButton
 					display={{ base: "flex", md: "none" }}
 					onClick={onClose}
 				/>
-			</Flex>
+			</HStack>
 			{LinkItems.map((link) => (
 				<NavItem
 					mt={4}

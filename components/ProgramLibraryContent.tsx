@@ -54,7 +54,13 @@ function ProgramLibraryContent() {
 						<BounceLoader color="#FB7185" />
 					</VStack>
 				)}
-				<SimpleGrid columns={2} spacing={20} mt={20} mb={20} w={"70vw"}>
+				<SimpleGrid
+					columns={{ base: 1, md: 2 }}
+					spacing={20}
+					mt={20}
+					mb={20}
+					w={"70vw"}
+				>
 					{programsRegistry &&
 						programsRegistry.map((registry) => (
 							<Box
