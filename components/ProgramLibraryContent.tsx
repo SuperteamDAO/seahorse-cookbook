@@ -74,10 +74,9 @@ function ProgramLibraryContent() {
 					Seahorse Program Library
 				</Heading>
 				<InputGroup w={"100"} mt={{ base: 4, md: 0 }}>
-					<InputLeftElement
-						pointerEvents="none"
-						children={<SearchIcon color="gray.300" />}
-					/>
+					<InputLeftElement pointerEvents="none">
+						<SearchIcon color="gray.300" />
+					</InputLeftElement>
 					<Input
 						type="text"
 						placeholder="Search"
