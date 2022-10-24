@@ -10,13 +10,14 @@ import {
 	InputGroup,
 	InputLeftElement,
 	Input,
+	useDisclosure,
 } from "@chakra-ui/react";
 import { SearchIcon } from "@chakra-ui/icons";
 import { supabase } from "../lib/initSupabase";
 import { BounceLoader } from "react-spinners";
 import { TfiNewWindow } from "react-icons/tfi";
 import getSearchResults from "../utils/search";
-// import getProgramLibrarySearchResult from "../utils/search";
+import ProgramLibraryForm from "./ProgramLibraryForm";
 
 interface ProgramRegistry {
 	id: number;
@@ -33,6 +34,8 @@ function ProgramLibraryContent() {
 	const [programsRegistry, setProgramsRegistry] =
 		useState<Array<ProgramRegistry>>();
 	const [searchInput, setSearchInput] = useState<string>("");
+
+	const { isOpen, onOpen, onClose } = useDisclosure();
 
 	useEffect(() => {
 		fetchProgramLibrary();
@@ -102,6 +105,23 @@ function ProgramLibraryContent() {
 				>
 					Seahorse Lang
 				</Link>
+				.
+			</Text>
+			<Text alignSelf={"start"} pl={14} pt={1} color="gray.400">
+				Contribute to the library by filling{" "}
+				<Box
+					as="span"
+					cursor={"pointer"}
+					color={"#FB7185"}
+					_hover={{ textDecoration: "underline" }}
+					onClick={() => {
+						onOpen();
+					}}
+				>
+					this
+				</Box>{" "}
+				form.
+				<ProgramLibraryForm onClose={onClose} isOpen={isOpen} />
 			</Text>
 			<Box>
 				{!programsRegistry && (
