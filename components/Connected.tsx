@@ -20,6 +20,7 @@ function Connected() {
 								display={"flex"}
 								flexDirection={"column"}
 								alignItems={"center"}
+								key={module.url}
 							>
 								<Box
 									mb={-4}

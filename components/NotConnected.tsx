@@ -19,8 +19,8 @@ function NotConnected() {
 				ables you to write Solana programs in Python.
 			</Text>
 			<Text>
-				If that gets you hyped, connect your wallet and let's go on a
-				journey to learn Seahorse!
+				If that gets you hyped, connect your wallet and let&apos;s go on
+				a journey to learn Seahorse!
 			</Text>
 		</VStack>
 	);
