@@ -34,8 +34,8 @@ const LinkItems: Array<LinkItemProps> = [
 		disabled: false,
 		url: "/programlibrary",
 	},
+	{ name: "Tutorials", icon: FiPenTool, disabled: false, url: "/tutorials" },
 	{ name: "Content Aggregator", icon: FiBook, disabled: true, url: "/404" },
-	{ name: "Tutorials", icon: FiPenTool, disabled: true, url: "/404" },
 ];
 
 export default function Sidebar({ children }: { children: ReactNode }) {
