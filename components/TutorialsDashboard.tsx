@@ -4,6 +4,8 @@ import {
 	WalletModalProvider,
 	WalletMultiButton,
 } from "@solana/wallet-adapter-react-ui";
+import Connected from "./Connected";
+import NotConnected from "./NotConnected";
 
 require("@solana/wallet-adapter-react-ui/styles.css");
 
@@ -11,7 +13,14 @@ function TutorialsDashboard() {
 	const wallet = useWallet();
 
 	return (
-		<VStack bg={"gray.900"} minH="100vh" h="full" w="100%">
+		<VStack
+			alignItems={"start"}
+			bg={"gray.900"}
+			minH="100vh"
+			h="full"
+			w="100%"
+			spacing={16}
+		>
 			<HStack
 				justifyContent={"space-between"}
 				alignSelf={"start"}
@@ -33,8 +42,8 @@ function TutorialsDashboard() {
 					/>
 				</WalletModalProvider>
 			</HStack>
-			{wallet.publicKey && <div>connected</div>}
-			{!wallet.publicKey && <div>not connected</div>}
+			{wallet.publicKey && <Connected />}
+			{!wallet.publicKey && <NotConnected />}
 		</VStack>
 	);
 }
