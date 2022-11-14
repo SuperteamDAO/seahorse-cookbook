@@ -4,10 +4,11 @@ import {
 	Heading,
 	SimpleGrid,
 	Text,
+	useToast,
 	VStack,
 } from "@chakra-ui/react";
 import { useWallet } from "@solana/wallet-adapter-react";
-import { useEffect } from "react";
+import { EffectCallback, useEffect } from "react";
 import beginnerModules from "../content/TutorialDashboard/TutorialsDashboardBeginner.json";
 import { supabase } from "../lib/initSupabase";
 import populateDB from "../utils/dbhelpers";
@@ -23,6 +24,8 @@ interface UserRegistry {
 function Connected() {
 	const { publicKey } = useWallet();
 
+	const toast = useToast();
+
 	const checkUserInRegistry = async () => {
 		let { data, error } = await supabase
 			.from("user_registry")
@@ -34,6 +37,14 @@ function Connected() {
 		}
 
 		if (data?.length === 0) {
+			toast({
+				title: "Hmm...",
+				description: "PublicKey Not Found in Registry",
+				status: "warning",
+				duration: 5000,
+				isClosable: true,
+			});
+
 			const newData = populateDB();
 
 			const registryValues = {
@@ -47,6 +58,14 @@ function Connected() {
 				.from("user_registry")
 				.insert(registryValues);
 
+			toast({
+				title: "Success",
+				description: "Successfully added to User Registry",
+				status: "success",
+				duration: 5000,
+				isClosable: true,
+			});
+
 			if (error) {
 				throw error;
 			}
@@ -54,8 +73,10 @@ function Connected() {
 	};
 
 	useEffect(() => {
-		checkUserInRegistry();
-	}, [publicKey]);
+		(async () => {
+			await checkUserInRegistry();
+		})();
+	}, []);
 
 	return (
 		<VStack spacing={24} alignItems={"start"} px={14} py={20}>
