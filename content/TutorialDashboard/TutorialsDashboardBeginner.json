@@ -3,35 +3,41 @@
 		"number": 1,
 		"title": "Solana",
 		"url": "/tutorials/gettingstarted/solana",
+		"pagecount": 1,
 		"disabled": true
 	},
 	{
 		"number": 2,
 		"title": "Solana Account Model",
+		"pagecount": 2,
 		"url": "/tutorials/gettingstarted/solanaaccountmodel",
 		"disabled": true
 	},
 	{
 		"number": 3,
 		"title": "PDAs",
+		"pagecount": 3,
 		"url": "/tutorials/gettingstarted/pdas",
 		"disabled": true
 	},
 	{
 		"number": 4,
 		"title": "Intro To Seahorse",
+		"pagecount": 4,
 		"url": "/tutorials/gettingstarted/introtoseahorse",
 		"disabled": true
 	},
 	{
 		"number": 5,
 		"title": "Seahorse vs Anchor",
+		"pagecount": 5,
 		"url": "/tutorials/gettingstarted/seahorsevsanchor",
 		"disabled": true
 	},
 	{
 		"number": 6,
 		"title": "Counter App",
+		"pagecount": 2,
 		"url": "/tutorials/gettingstarted/counterapp",
 		"disabled": true
 	}
