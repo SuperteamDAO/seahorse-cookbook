@@ -11,12 +11,12 @@ function NotConnected() {
 		>
 			<Text>Welcome to Seahorse Tutorials!</Text>
 			<Text>
-				What is it and what can you expect out of these tutorials? Well
-				as for one you will get to know more about Seahorse Lang.
+				What can you expect out of these tutorials? Well as for one you
+				will get to know more about Seahorse Lang.
 			</Text>
 			<Text>
 				What is it? It is a framework built on top of Anchor Lang which
-				ables you to write Solana programs in Python.
+				allows you to write Solana programs in Python.
 			</Text>
 			<Text>
 				If that gets you hyped, connect your wallet and let&apos;s go on
