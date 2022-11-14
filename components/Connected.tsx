@@ -8,6 +8,7 @@ import {
 	VStack,
 } from "@chakra-ui/react";
 import { useWallet } from "@solana/wallet-adapter-react";
+import { useRouter } from "next/router";
 import { useEffect } from "react";
 import beginnerModules from "../content/TutorialDashboard/TutorialsDashboardBeginner.json";
 import { supabase } from "../lib/initSupabase";
@@ -25,6 +26,7 @@ function Connected() {
 	const { publicKey } = useWallet();
 
 	const toast = useToast();
+	const router = useRouter();
 
 	const checkUserInRegistry = async () => {
 		let { data, error } = await supabase
@@ -145,6 +147,9 @@ function Connected() {
 									_active={{
 										backgroundColor: "#73363F",
 										color: "white",
+									}}
+									onClick={() => {
+										router.push(`${module.url}_1`);
 									}}
 								>
 									Start
