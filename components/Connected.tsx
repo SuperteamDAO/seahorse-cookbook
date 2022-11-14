@@ -8,7 +8,7 @@ import {
 	VStack,
 } from "@chakra-ui/react";
 import { useWallet } from "@solana/wallet-adapter-react";
-import { EffectCallback, useEffect } from "react";
+import { useEffect } from "react";
 import beginnerModules from "../content/TutorialDashboard/TutorialsDashboardBeginner.json";
 import { supabase } from "../lib/initSupabase";
 import populateDB from "../utils/dbhelpers";
