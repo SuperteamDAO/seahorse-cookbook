@@ -6,9 +6,57 @@ import {
 	Text,
 	VStack,
 } from "@chakra-ui/react";
+import { useWallet } from "@solana/wallet-adapter-react";
+import { useEffect } from "react";
 import beginnerModules from "../content/TutorialDashboard/TutorialsDashboardBeginner.json";
+import { supabase } from "../lib/initSupabase";
+import populateDB from "../utils/dbhelpers";
+
+interface UserRegistry {
+	id: number;
+	pubkey: string;
+	beginner: Record<string, any>;
+	intermediate: Record<string, any>;
+	advanced: Record<string, any>;
+}
 
 function Connected() {
+	const { publicKey } = useWallet();
+
+	const checkUserInRegistry = async () => {
+		let { data, error } = await supabase
+			.from("user_registry")
+			.select("*")
+			.eq("pubkey", publicKey);
+
+		if (error) {
+			throw error;
+		}
+
+		if (data?.length === 0) {
+			const newData = populateDB();
+
+			const registryValues = {
+				pubkey: publicKey,
+				beginner: newData.beginnerModules,
+				intermediate: newData.intermediateModules,
+				advanced: newData.advancedModules,
+			};
+
+			let { error } = await supabase
+				.from("user_registry")
+				.insert(registryValues);
+
+			if (error) {
+				throw error;
+			}
+		}
+	};
+
+	useEffect(() => {
+		checkUserInRegistry();
+	}, [publicKey]);
+
 	return (
 		<VStack spacing={24} alignItems={"start"} px={14} py={20}>
 			<VStack alignItems={"start"} spacing={20}>
