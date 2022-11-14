@@ -4,24 +4,24 @@ import ReactMarkdown from "react-markdown";
 import Sidebar from "../../../components/Sidebar";
 import CodeView from "../../../components/CodeView";
 
-function modulePage() {
+function ModulePage() {
 	const [pageContent, setPageContent] = useState("");
 
 	const { asPath } = useRouter();
 
 	useEffect(() => {
 		const splitPath = asPath.split("/").slice(-1)[0].split("_");
-		const module = splitPath[0];
-		const page = splitPath[1];
+		const moduleName = splitPath[0];
+		const pageNum = splitPath[1];
 
-		import(`../../../content/BeginnerModules/${module}/${page}.md`).then(
-			(res) => {
-				fetch(res.default)
-					.then((response) => response.text())
-					.then((response) => setPageContent(response))
-					.catch((err) => console.log(err));
-			}
-		);
+		import(
+			`../../../content/BeginnerModules/${moduleName}/${pageNum}.md`
+		).then((res) => {
+			fetch(res.default)
+				.then((response) => response.text())
+				.then((response) => setPageContent(response))
+				.catch((err) => console.log(err));
+		});
 	}, []);
 
 	return (
@@ -31,4 +31,4 @@ function modulePage() {
 	);
 }
 
-export default modulePage;
+export default ModulePage;
