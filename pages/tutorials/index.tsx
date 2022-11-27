@@ -1,6 +1,5 @@
 import {
 	ConnectionProvider,
-	useWallet,
 	WalletProvider,
 } from "@solana/wallet-adapter-react";
 import {
@@ -9,10 +8,6 @@ import {
 	GlowWalletAdapter,
 	BackpackWalletAdapter,
 } from "@solana/wallet-adapter-wallets";
-import {
-	WalletModalProvider,
-	WalletMultiButton,
-} from "@solana/wallet-adapter-react-ui";
 import { WalletAdapterNetwork } from "@solana/wallet-adapter-base";
 import { clusterApiUrl } from "@solana/web3.js";
 import { useMemo } from "react";

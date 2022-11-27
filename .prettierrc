@@ -1,4 +1,8 @@
 {
-  "tabWidth": 4,
-  "useTabs": true
+	"tabWidth": 4,
+	"useTabs": true,
+	"semi": true,
+	"arrowParens": "always",
+	"endOfLine": "lf",
+	"jsxSingleQuote": false
 }

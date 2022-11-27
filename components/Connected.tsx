@@ -8,6 +8,7 @@ import {
 	VStack,
 } from "@chakra-ui/react";
 import { useWallet } from "@solana/wallet-adapter-react";
+import { PublicKey } from "@solana/web3.js";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import beginnerModules from "../content/TutorialDashboard/TutorialsDashboardBeginner.json";
@@ -16,7 +17,7 @@ import populateDB from "../utils/dbhelpers";
 
 interface UserRegistry {
 	id: number;
-	pubkey: string;
+	pubkey: PublicKey;
 	beginner: Record<string, any>;
 	intermediate: Record<string, any>;
 	advanced: Record<string, any>;
@@ -39,14 +40,6 @@ function Connected() {
 		}
 
 		if (data?.length === 0) {
-			toast({
-				title: "Hmm...",
-				description: "PublicKey Not Found in Registry",
-				status: "warning",
-				duration: 5000,
-				isClosable: true,
-			});
-
 			const newData = populateDB();
 
 			const registryValues = {
@@ -62,7 +55,7 @@ function Connected() {
 
 			toast({
 				title: "Success",
-				description: "Successfully added to User Registry",
+				description: "Added user wallet to registry.",
 				status: "success",
 				duration: 5000,
 				isClosable: true,
@@ -78,6 +71,7 @@ function Connected() {
 		(async () => {
 			await checkUserInRegistry();
 		})();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	return (

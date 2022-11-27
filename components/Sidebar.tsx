@@ -95,6 +95,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 				>
 					<Image
 						src={CookbookLogo}
+						alt="Seahorse Cookbook Logo"
 						height={30}
 						width={30}
 						style={{ borderRadius: 8, marginRight: 0 }}
@@ -219,6 +220,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
 			>
 				<Image
 					src={CookbookLogo}
+					alt="Seahorse Cookbook Logo"
 					height={40}
 					width={40}
 					style={{ borderRadius: 8 }}

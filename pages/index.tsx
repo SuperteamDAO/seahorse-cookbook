@@ -9,7 +9,7 @@ const Home: NextPage = () => {
 			<Head>
 				<title>Seahorse Cookbook</title>
 				<meta name="description" content="Everything Seahorse Lang" />
-				<link rel="icon" href="/CookBookLogo.png" />
+				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<Sidebar>
 				<HomePageContent />

@@ -1,4 +1,4 @@
-import { Box, Heading, HStack, VStack } from "@chakra-ui/react";
+import { Heading, HStack, VStack } from "@chakra-ui/react";
 import { useWallet } from "@solana/wallet-adapter-react";
 import {
 	WalletModalProvider,

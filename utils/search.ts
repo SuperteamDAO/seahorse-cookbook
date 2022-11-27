@@ -1,3 +1,5 @@
+// TODO: change search algorithm
+
 const getDistance = (str1 = "", str2 = "") => {
 	const track = Array(str2.length + 1)
 		.fill(null)
