@@ -1,8 +1,9 @@
 import Head from "next/head";
 import Sidebar from "../components/Sidebar";
 import ProgramLibraryContent from "../components/ProgramLibraryContent";
+import { NextPage } from "next";
 
-function ProgramLibrary() {
+const ProgramLibrary: NextPage = () => {
 	return (
 		<div>
 			<Head>
@@ -15,6 +16,6 @@ function ProgramLibrary() {
 			</Sidebar>
 		</div>
 	);
-}
+};
 
 export default ProgramLibrary;
